@@ -1,12 +1,12 @@
-import CardItems from "./card-items";
+import CardItem from "./card-items";
 
 const CartComponent = () => {
   return (
     <div className="p-6 rounded-xl bg-Rose-50">
-      <h2 className="text-Red font-bold text-xl mb-5">Your Cart (2)</h2>
-      <CardItems />
-      <CardItems />
-      <CardItems />
+      <h2 className="text-Red font-bold text-xl">Your Cart (2)</h2>
+      <CardItem />
+      <CardItem />
+      <CardItem />
       <div className="flex justify-between items-center mb-6">
         <p className="text-sm">Order Total</p>
         <p className="text-2xl font-bold">$46.50</p>
@@ -17,7 +17,7 @@ const CartComponent = () => {
           This is a <span className="font-bold">carbon-neutral</span> delivery
         </p>
       </div>
-      <button className="bg-Red rounded-full p-3 text-Rose-50 w-full cursor-pointer hover:bg-Red/90 transition-colors">
+      <button className="bg-Red rounded-full p-3 text-Rose-50 w-full cursor-pointer hover:bg-Red/0 transition-colors">
         Confirm Order
       </button>
     </div>
