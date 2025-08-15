@@ -1,9 +1,15 @@
 import CartButton from "./cart-button";
 import CartConfirmItem from "./cart-confimItem";
 import CartTotal from "./cart-total";
+import { cartStore } from "../zustand/cart-store";
+
 const ModalComponent = () => {
+  const { isClose, toggleClose } = cartStore();
   return (
-    <dialog className="bg-black/50 w-full fixed h-screen grid place-content-center">
+    <dialog
+      hidden={isClose}
+      className="bg-black/50 w-full fixed h-screen grid place-content-center"
+    >
       <div className=" w-[375px] md:w-[688px] py-10 px-6 bg-Rose-50 rounded-xl mt-10 mb-10">
         <img src="/assets/images/icon-order-confirmed.svg"></img>
         <h2 className="text-[2.5rem] font-bold">Order Confirmed</h2>
@@ -17,7 +23,7 @@ const ModalComponent = () => {
           <CartTotal />
         </div>
         <div className="mt-8">
-          <CartButton text="Start new order" />
+          <CartButton text="Start new order" onClick={toggleClose} />
         </div>
       </div>
     </dialog>

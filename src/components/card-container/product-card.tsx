@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { cartStore } from "../zustand/cart-store";
+
 type ImageSet = {
   thumbnail: string;
   mobile: string;
@@ -6,7 +8,7 @@ type ImageSet = {
   desktop: string;
 };
 
-type SingleItem = {
+export type SingleItem = {
   image: ImageSet;
   name: string;
   category: string;
@@ -14,12 +16,27 @@ type SingleItem = {
 };
 
 const ProductCard = ({ item }: { item: SingleItem }) => {
+  const { name, price } = item;
+  const { addItemCart, updateItemInCart, deleteItemFromCart } = cartStore();
   const [quantity, setQuantity] = useState(0);
   const addOne = () => {
-    setQuantity(quantity + 1);
+    //como react guarda el valor actualizado para el proximo render
+    const newQuantity = quantity + 1;
+
+    setQuantity(newQuantity);
+    if (newQuantity > 1) {
+      updateItemInCart({ name, price, newQuantity });
+    } else {
+      addItemCart({ name, price, newQuantity });
+    }
   };
   const sustractOne = () => {
-    setQuantity(quantity - 1);
+    const newQuantity = quantity - 1;
+    setQuantity(newQuantity);
+    updateItemInCart({ name, price, newQuantity });
+    if (newQuantity === 0) {
+      deleteItemFromCart(name);
+    }
   };
   return (
     <div className="relative">

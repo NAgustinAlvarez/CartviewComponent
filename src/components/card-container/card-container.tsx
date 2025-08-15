@@ -1,5 +1,5 @@
 import ProductCard from "./product-card";
-import data from "../../data.json";
+import data from "../../../data.json";
 const CardContainer = () => {
   return (
     <div className="grid md:grid-cols-3 lg gap-6 mb-6  w-[327px] md:w-[688px]">

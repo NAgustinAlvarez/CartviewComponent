@@ -1,5 +1,6 @@
-import CardContainer from "./components/card-container";
-import CartComponent from "./components/card-component/cart-component";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import CardContainer from "./components/card-container/card-container";
+import CartComponent from "./components/cart-component/cart-component";
 import ModalComponent from "./components/modal-component/modal-component";
 
 function App() {
